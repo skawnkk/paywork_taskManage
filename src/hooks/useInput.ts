@@ -1,4 +1,4 @@
-import { SetStateAction, Dispatch } from "react";
+import { SetStateAction, Dispatch, useCallback } from "react";
 import { ChangeEvent } from "react";
 import { useState } from "react";
 
@@ -9,9 +9,9 @@ type ReturnType<T> = [
 ];
 export const useInput = <T>(initialText: T): ReturnType<T> => {
   const [value, setValue] = useState(initialText);
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value as unknown as T);
-  };
+  }, []);
 
   return [value, onChange, setValue];
 };

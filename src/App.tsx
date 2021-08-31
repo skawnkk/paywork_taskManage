@@ -1,11 +1,28 @@
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getTaskList, addTask } from "./store/actions/tasks";
 import styled from "styled-components";
+import TaskList from "components/TaskList";
 import { useInput } from "./hooks/useInput";
+
 function App() {
-  const [value, onChange] = useInput("");
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(getTaskList());
+  }, [dispatch]);
+
+  const [value, onChange, setValue] = useInput("");
   const handleCreateTask = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(value);
+    const new_task = {
+      content: value,
+      isCheck: false,
+      createdAt: String(new Date()),
+    };
+    dispatch(addTask(new_task));
+    setValue("");
   };
 
   return (
@@ -17,6 +34,7 @@ function App() {
           <button type="submit">add a task</button>
         </form>
       </TaskHeader>
+      <TaskList tasks={tasks} />
     </div>
   );
 }

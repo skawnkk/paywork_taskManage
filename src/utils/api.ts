@@ -18,3 +18,20 @@ export const getLists = async () => {
 export const addTask = (new_task: TaskType) => {
   return axios.post(BASIC_URL(), new_task);
 };
+export const toggleTask = (task: TaskType) => {
+  const toggleTask = {
+    ...task,
+    isCheck: !task.isCheck,
+  };
+  return axios.put(BASIC_URL(task.id), toggleTask);
+};
+export const editTask = (task: TaskType) => {
+  const editTask = {
+    ...task,
+    content: task.content,
+  };
+  return axios.put(BASIC_URL(task.id), editTask);
+};
+export const deleteTask = (id?: number) => {
+  return axios.delete(BASIC_URL(id));
+};

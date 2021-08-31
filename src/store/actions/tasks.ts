@@ -20,6 +20,15 @@ export const addTask = (new_task: TaskType): Action => ({
   payload: new_task,
   meta: new_task,
 });
-export const editTask = () => ({ type: TASK_EDIT });
-export const toggleTask = () => ({ type: TASK_TOGGLE });
-export const deleteTask = () => ({ type: TASK_DELETE });
+export const editTask = (task: TaskType) => ({
+  type: TASK_EDIT,
+  payload: task,
+});
+export const toggleTask = (task: TaskType) => ({
+  type: TASK_TOGGLE,
+  payload: task,
+});
+export const deleteTask = (id: number | undefined) => ({
+  type: TASK_DELETE,
+  payload: id,
+});

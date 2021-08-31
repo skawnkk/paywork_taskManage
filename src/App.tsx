@@ -2,7 +2,7 @@ import { FormEvent, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTaskList, addTask } from "./store/actions/tasks";
 import styled from "styled-components";
-import TaskList from "components/TaskList";
+import TaskList from "components/taskList";
 import { useInput } from "./hooks/useInput";
 
 function App() {

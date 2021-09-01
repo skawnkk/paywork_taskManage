@@ -1,4 +1,6 @@
+import { AxiosResponse } from "axios";
 import { delay, put, call, takeLatest, CallEffect } from "redux-saga/effects";
+import { TaskType } from "utils/types";
 import * as TASK_API from "../../utils/api";
 import {
   TASK_LIST,
@@ -13,64 +15,36 @@ import {
   TASK_TOGGLE,
   TASK_DELETE,
 } from "../actions/types";
-import { TaskType } from "../../utils/types";
 
-export function* getTaskList() {
-  const wait: CallEffect<true> = yield delay(500);
-  try {
-    const result: CallEffect<true> = yield call(TASK_API.getLists);
-    yield put({ type: TASK_LIST_SUCCESS, payload: result });
-  } catch (e) {
-    yield put({ type: TASK_LIST_ERROR, payload: e });
-  }
+const getList = createSaga(TASK_API.getLists, TASK_LIST_SUCCESS);
+const addTask = createSaga(TASK_API.addTask, TASK_LIST_ADD);
+const toggleTask = createSaga(TASK_API.toggleTask, TASK_LIST_TOGGLE);
+const editTask = createSaga(TASK_API.editTask, TASK_LIST_EDIT);
+const deleteTask = createSaga(TASK_API.deleteTask, TASK_LIST_DELETE);
+
+interface Action {
+  type: string;
+  payload: TaskType;
+  meta: number;
 }
-export function* addTask(action: any) {
-  try {
-    const result: CallEffect<true> = yield call(
-      TASK_API.addTask,
-      action.payload
-    );
-    yield put({ type: TASK_LIST_ADD, payload: result });
-  } catch (e) {
-    yield put({ type: TASK_LIST_ERROR, payload: e });
-  }
-}
-export function* toggleTask(action: any) {
-  try {
-    const result: CallEffect<true> = yield call(
-      TASK_API.toggleTask,
-      action.payload
-    );
-    yield put({ type: TASK_LIST_TOGGLE, payload: result });
-  } catch (e) {
-    yield put({ type: TASK_LIST_ERROR, payload: e });
-  }
-}
-export function* editTask(action: any) {
-  try {
-    const result: CallEffect<true> = yield call(
-      TASK_API.editTask,
-      action.payload
-    );
-    yield put({ type: TASK_LIST_EDIT, payload: result });
-  } catch (e) {
-    yield put({ type: TASK_LIST_ERROR, payload: e });
-  }
-}
-export function* deleteTask(action: any) {
-  try {
-    const result: CallEffect<true> = yield call(
-      TASK_API.deleteTask,
-      action.payload
-    );
-    yield put({ type: TASK_LIST_DELETE });
-  } catch (e) {
-    yield put({ type: TASK_LIST_ERROR, payload: e });
-  }
+
+function createSaga(
+  api: (task: TaskType) => Promise<AxiosResponse<any>>,
+  type: string
+) {
+  return function* saga(action: Action) {
+    try {
+      const result: CallEffect<true> = yield call(api, action.payload);
+      yield delay(500);
+      yield put({ type, payload: result, meta: action.payload?.id });
+    } catch (e) {
+      yield put({ type: TASK_LIST_ERROR, payload: e });
+    }
+  };
 }
 
 export function* tasks() {
-  yield takeLatest(TASK_LIST, getTaskList);
+  yield takeLatest(TASK_LIST, getList);
   yield takeLatest(TASK_ADD, addTask);
   yield takeLatest(TASK_TOGGLE, toggleTask);
   yield takeLatest(TASK_EDIT, editTask);

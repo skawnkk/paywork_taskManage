@@ -4,6 +4,7 @@ import { FaCheck } from "react-icons/fa";
 import { editTask } from "../../store/actions/task/tasks";
 import { useInput } from "hooks/useInput";
 import { TaskToProp } from "utils/types";
+import styled from "styled-components";
 export default function TaskText({ task }: TaskToProp) {
   const dispatch = useDispatch();
   const [editText, onChange] = useInput(task.content);
@@ -12,15 +13,11 @@ export default function TaskText({ task }: TaskToProp) {
   const handleTextEditClick = () => {
     const editedTask = { ...task, content: editText };
     dispatch(editTask(editedTask));
-    handleEditMode(); //!handleEditMode를 동기적으로 실행하는 방법? 설마 이것도 리듀서...?
+    handleEditMode();
   };
 
-  // useEffect(() => {
-  //   if (editMode) handleEditMode();
-  // }, [dispatch]);
-
   return (
-    <>
+    <TextBox>
       {!editMode ? (
         <p onDoubleClick={handleEditMode}>{task.content}</p>
       ) : (
@@ -36,6 +33,13 @@ export default function TaskText({ task }: TaskToProp) {
           </button>
         </form>
       )}
-    </>
+    </TextBox>
   );
 }
+
+const TextBox = styled.div`
+  input,
+  button {
+    color: ${({ theme }) => theme.baseFont};
+  }
+`;

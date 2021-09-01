@@ -28,7 +28,6 @@ export default function tasks(state = INITIAL_STATE, action: Action) {
         error: false,
       };
     case TASK_LIST_SUCCESS:
-      console.log(action.payload);
       return {
         data: action.payload?.data,
         loading: false,

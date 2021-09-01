@@ -1,48 +1,50 @@
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { toggleTask, deleteTask } from "../../store/actions/tasks";
-import TaskText from "./TaskText";
+import { deleteTask } from "../../store/actions/tasks";
 import { TaskType, TasksToProp } from "../../utils/types";
 import { changeDateFormat } from "../../utils/date";
-import { BiCircle, BiCheckCircle } from "react-icons/bi";
-import { RiDeleteBin2Fill } from "react-icons/ri";
+import { RiDeleteBin2Fill as TaskDeleteBtn } from "react-icons/ri";
 import styled from "styled-components";
-
+import TaskText from "./TaskText";
+import TaskToggle from "./TaskToggle";
+import TaskTabs from "./TaskTabs";
 interface Tasks {
   tasks: TasksToProp;
 }
 export default function TaskList({ tasks }: Tasks) {
   const dispatch = useDispatch();
   const { data: tasklist, loading, error } = tasks.tasks;
-
-  const handleTaskToggle = (task: TaskType) => dispatch(toggleTask(task));
+  const [listView, setListView] = useState(tasklist);
   const handleTaskDelete = (task: TaskType) => dispatch(deleteTask(task));
+
+  useEffect(() => setListView(tasklist), [tasks]);
 
   if (loading) return <ListBox>Loading...</ListBox>;
   if (error) return <ListBox>에러가 발생했어요. 다시 접속해 주세요😦</ListBox>;
   if (!tasklist.length) return <ListBox>새로운 계획을 세워보세요📌</ListBox>;
-
   return (
-    <ListBox>
-      {tasklist?.map((task: TaskType) => {
-        return (
-          <TaskBox key={task.id} isCheck={task.isCheck}>
-            {task.isCheck ? (
-              <BiCheckCircle onClick={() => handleTaskToggle(task)} />
-            ) : (
-              <BiCircle onClick={() => handleTaskToggle(task)} />
-            )}
-            <TaskText task={task} />
-            <p>{changeDateFormat(task.createdAt)}</p>
-            <RiDeleteBin2Fill onClick={() => handleTaskDelete(task)} />
-          </TaskBox>
-        );
-      })}
-    </ListBox>
+    <>
+      <TaskTabs {...{ tasklist, setListView }} />
+
+      <ListBox>
+        {listView?.map((task: TaskType) => {
+          return (
+            <TaskBox key={task.id} isCheck={task.isCheck}>
+              <TaskToggle task={task} />
+              <TaskText task={task} />
+              <p>{changeDateFormat(task.createdAt)}</p>
+              <TaskDeleteBtn onClick={() => handleTaskDelete(task)} />
+            </TaskBox>
+          );
+        })}
+      </ListBox>
+    </>
   );
 }
 interface TaskBoxProp {
   isCheck: boolean;
 }
+
 const ListBox = styled.div`
   display: flex;
   flex-direction: column;

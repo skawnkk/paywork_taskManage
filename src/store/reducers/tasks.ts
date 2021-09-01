@@ -6,6 +6,8 @@ import {
   TASK_LIST_EDIT,
   TASK_LIST_TOGGLE,
   TASK_LIST_DELETE,
+  TASK_UNCHECKED,
+  TASK_CHECKED,
 } from "../actions/types";
 import { TaskType, TaskStatus } from "../../utils/types";
 
@@ -27,6 +29,22 @@ export default function tasks(state = INITIAL_STATE, action: Action) {
         loading: true,
         error: false,
       };
+    case TASK_UNCHECKED: {
+      return {
+        ...state,
+        data: state.data.filter((task) => !task.isCheck),
+        loading: false,
+        error: false,
+      };
+    }
+    case TASK_CHECKED: {
+      return {
+        ...state,
+        data: state.data.filter((task) => task.isCheck),
+        loading: false,
+        error: false,
+      };
+    }
     case TASK_LIST_SUCCESS:
       console.log(action.payload);
       return {

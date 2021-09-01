@@ -3,10 +3,7 @@ import { useDispatch } from "react-redux";
 import { FaCheck } from "react-icons/fa";
 import { editTask } from "../../store/actions/tasks";
 import { useInput } from "hooks/useInput";
-import { TaskType } from "utils/types";
-export interface TaskToProp {
-  task: TaskType;
-}
+import { TaskToProp } from "utils/types";
 export default function TaskText({ task }: TaskToProp) {
   const dispatch = useDispatch();
   const [editText, onChange] = useInput(task.content);

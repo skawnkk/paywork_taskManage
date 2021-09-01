@@ -14,3 +14,6 @@ export interface TaskType {
   isCheck: boolean;
   createdAt: string;
 }
+export interface TaskToProp {
+  task: TaskType;
+}

@@ -4,6 +4,8 @@ import {
   TASK_EDIT,
   TASK_TOGGLE,
   TASK_DELETE,
+  TASK_UNCHECKED,
+  TASK_CHECKED,
 } from "./types";
 import { TaskType } from "../../utils/types";
 //*액션함수생성
@@ -25,3 +27,6 @@ export const deleteTask = (task: TaskType) => ({
   type: TASK_DELETE,
   payload: task,
 });
+
+export const getTaskUnChecked = () => ({ type: TASK_UNCHECKED });
+export const getTaskChecked = () => ({ type: TASK_CHECKED });

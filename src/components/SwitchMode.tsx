@@ -23,15 +23,14 @@ interface ScreenProp {
 
 const ToggleBox = styled.div`
   border: 1px solid ${({ theme }) => theme.line};
-  width: 50px;
-  border: 1px solid #c9c9c9;
   border-radius: 30%;
+  width: 50px;
   height: 25px;
 `;
 const Circle = styled.div<ScreenProp>`
-  font-size: 20px;
   border: none;
   border-radius: 50%;
+  font-size: 20px;
   transition: transform 0.3s;
   transform: ${(props) =>
     props.isLight ? `translateX(-2px)` : `translateX(23px)`};

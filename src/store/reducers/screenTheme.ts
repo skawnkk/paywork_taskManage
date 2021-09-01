@@ -1,7 +1,13 @@
 import { DARK_MODE, LIGHT_MODE } from "../actions/theme/types";
 const INITIAL_STATE = true;
 
-export default function screenTheme(state = INITIAL_STATE, action: any) {
+interface ThemeAction {
+  type: string;
+}
+export default function screenTheme(
+  state = INITIAL_STATE,
+  action: ThemeAction
+) {
   switch (action.type) {
     case LIGHT_MODE:
       return true;

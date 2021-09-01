@@ -22,3 +22,15 @@ export interface SelectorType {
   screenTheme: boolean;
   tasks: TaskStatus;
 }
+
+export interface Theme {
+  background: string;
+  headerBack: string;
+  headerElement: string;
+  baseFont: string;
+  tabFontTrue: string;
+  tabFontFalse: string;
+  line: string;
+  tabBackTrue: string;
+  tabBackFalse: string;
+}

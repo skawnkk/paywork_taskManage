@@ -58,7 +58,11 @@ const Tab = styled.div<TabProp>`
   border: 1px solid ${({ theme }) => theme.line};
   border-collapse: collapse;
   background-color: ${(props) =>
-    props.tabView === props.tab ? props.theme.accent : props.theme.main};
+    props.tabView === props.tab
+      ? props.theme.tabBackTrue
+      : props.theme.tabBackFalse};
   color: ${(props) =>
-    props.tabView === props.tab ? props.theme.main : props.theme.baseFont};
+    props.tabView === props.tab
+      ? props.theme.tabFontTrue
+      : props.theme.tabFontFalse};
 `;

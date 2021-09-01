@@ -1,11 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-const GlobalStyle = createGlobalStyle`${reset}
-*{
-	box-sizing:border-box;
+import { Theme } from "utils/types";
+interface Style {
+  theme: Theme;
 }
-body{
-  background-color: #ffffff;
+
+const GlobalStyle = createGlobalStyle`${reset}
+  *{
+    box-sizing:border-box;
+  }
+  body{
+  background-color: ${(props: Style) => props.theme.background};
   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,'Anton', sans-serif;
   }
   a {

@@ -58,9 +58,12 @@ const ListBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-width: 520px;
   padding: 20px;
+  margin: 0px auto;
+  min-width: 520px;
   border: 1px solid ${({ theme }) => theme.line};
+  text-align: center;
+  color: ${({ theme }) => theme.baseFont};
 `;
 const TaskBox = styled.li<TaskBoxProp>`
   display: grid;

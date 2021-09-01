@@ -1,3 +1,11 @@
+### 시연영상
+ [기본 CRUD]
+ 
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/65053955/131714934-07c94c9e-56f5-4aca-abd4-47345543a061.gif)  
+
+[스크린 다크모드 변경]  
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/65053955/131715112-111e9ef4-e796-4346-92a4-af46f9192606.gif)
+
 ### 기본구현사항
 - 전체 데이터 받아오기
 - 입력가능

@@ -23,7 +23,7 @@ export default function TaskList({ tasks }: Tasks) {
   if (error) return <ListBox>에러가 발생했어요. 다시 접속해 주세요😦</ListBox>;
   if (!tasklist.length) return <ListBox>새로운 계획을 세워보세요📌</ListBox>;
   return (
-    <>
+    <TaskListBox>
       <TaskTabs {...{ tasklist, setListView }} />
 
       <ListBox>
@@ -38,20 +38,24 @@ export default function TaskList({ tasks }: Tasks) {
           );
         })}
       </ListBox>
-    </>
+      <p>✌ Double-click to edit content</p>
+    </TaskListBox>
   );
 }
 interface TaskBoxProp {
   isCheck: boolean;
 }
-
+const TaskListBox = styled.div`
+  margin: 20px auto;
+  width: 80%;
+`;
 const ListBox = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 760px;
-  min-width: 520px;
   gap: 10px;
-  margin: 20px 10%;
+  min-width: 520px;
+  padding: 20px;
+  border: 1px solid ${({ theme }) => theme.lightMode.line};
 `;
 const TaskBox = styled.li<TaskBoxProp>`
   display: grid;

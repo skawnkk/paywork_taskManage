@@ -31,16 +31,38 @@ export default function TaskTabs({ setListView, tasklist }: Tabs) {
   return (
     <TabBox>
       {tabs.map((tab, idx) => (
-        <div key={idx} onClick={() => handleTabView(idx)}>
+        <Tab
+          key={idx}
+          tabView={tabView}
+          tab={tab}
+          onClick={() => handleTabView(idx)}>
           {tab}
-        </div>
+        </Tab>
       ))}
     </TabBox>
   );
 }
+interface TabProp {
+  tabView: string;
+  tab: string;
+}
 const TabBox = styled.div`
   display: flex;
-  div {
-    border: 1px solid ${({ theme }) => theme.color.grey};
-  }
+`;
+const Tab = styled.div<TabProp>`
+  font-size: 15px;
+  min-width: 110px;
+  text-align: center;
+  padding: 5px;
+  color: ${({ theme }) => theme.lightMode.baseFont};
+  border: 1px solid ${({ theme }) => theme.lightMode.line};
+  border-collapse: collapse;
+  background-color: ${(props) =>
+    props.tabView === props.tab
+      ? props.theme.lightMode.accent
+      : props.theme.lightMode.main};
+  color: ${(props) =>
+    props.tabView === props.tab
+      ? props.theme.lightMode.main
+      : props.theme.lightMode.baseFont};
 `;

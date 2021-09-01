@@ -6,9 +6,7 @@ import {
   TASK_LIST_EDIT,
   TASK_LIST_TOGGLE,
   TASK_LIST_DELETE,
-  TASK_UNCHECKED,
-  TASK_CHECKED,
-} from "../actions/types";
+} from "../actions/task/types";
 import { TaskType, TaskStatus } from "../../utils/types";
 
 interface Payload {
@@ -23,28 +21,12 @@ const INITIAL_STATE: TaskStatus = { data: [], loading: true, error: false };
 
 export default function tasks(state = INITIAL_STATE, action: Action) {
   switch (action.type) {
-    case TASK_LIST: //!초기화 (로딩상태 변경) ___필요한가?
+    case TASK_LIST:
       return {
         ...state,
         loading: true,
         error: false,
       };
-    case TASK_UNCHECKED: {
-      return {
-        ...state,
-        data: state.data.filter((task) => !task.isCheck),
-        loading: false,
-        error: false,
-      };
-    }
-    case TASK_CHECKED: {
-      return {
-        ...state,
-        data: state.data.filter((task) => task.isCheck),
-        loading: false,
-        error: false,
-      };
-    }
     case TASK_LIST_SUCCESS:
       console.log(action.payload);
       return {

@@ -17,3 +17,8 @@ export interface TaskType {
 export interface TaskToProp {
   task: TaskType;
 }
+
+export interface SelectorType {
+  screenTheme: boolean;
+  tasks: TaskStatus;
+}

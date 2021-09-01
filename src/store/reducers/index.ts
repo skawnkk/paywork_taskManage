@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import tasks from "./tasks";
-const rootReducer = combineReducers({ tasks });
+import screenTheme from "./screenTheme";
+const rootReducer = combineReducers({ tasks, screenTheme });
 
 export default rootReducer;

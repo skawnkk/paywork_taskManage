@@ -10,5 +10,3 @@ export const TASK_LIST_ADD = "task/getList/add";
 export const TASK_LIST_EDIT = "task/getList/edit";
 export const TASK_LIST_TOGGLE = "task/getList/toggle";
 export const TASK_LIST_DELETE = "task/getList/delete";
-export const TASK_UNCHECKED = "task/getList/unChecked";
-export const TASK_CHECKED = "task/getList/checked";

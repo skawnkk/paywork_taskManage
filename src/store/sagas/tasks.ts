@@ -14,7 +14,7 @@ import {
   TASK_EDIT,
   TASK_TOGGLE,
   TASK_DELETE,
-} from "../actions/types";
+} from "../actions/task/types";
 
 const getList = createSaga(TASK_API.getLists, TASK_LIST_SUCCESS);
 const addTask = createSaga(TASK_API.addTask, TASK_LIST_ADD);

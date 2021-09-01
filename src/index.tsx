@@ -3,17 +3,24 @@ import ReactDOM from "react-dom";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./style/globalStyle";
 import { theme } from "./style/theme";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import store from "./store";
 import App from "./App";
+import { SelectorType } from "utils/types";
+
+function ThemeSetting({ children }: any) {
+  const isLightMode = useSelector((state: SelectorType) => state.screenTheme);
+  const screenTheme = isLightMode ? theme.lightMode : theme.darkMode;
+  return <ThemeProvider theme={screenTheme}>{children}</ThemeProvider>;
+}
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <GlobalStyle />
+      <ThemeSetting>
         <App />
-      </Provider>
-    </ThemeProvider>
+      </ThemeSetting>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

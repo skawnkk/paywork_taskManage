@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTask } from "../../store/actions/tasks";
+import { deleteTask } from "../../store/actions/task/tasks";
 import { TaskType, TasksToProp } from "../../utils/types";
 import { changeDateFormat } from "../../utils/date";
 import { RiDeleteBin2Fill as TaskDeleteBtn } from "react-icons/ri";
@@ -38,16 +38,21 @@ export default function TaskList({ tasks }: Tasks) {
           );
         })}
       </ListBox>
-      <p>✌ Double-click to edit content</p>
+      <GuideMsg>✌ Double-click Tasks to edit content</GuideMsg>
     </TaskListBox>
   );
 }
 interface TaskBoxProp {
   isCheck: boolean;
 }
+const GuideMsg = styled.div`
+  margin-top: 10px;
+  font-size: 12px;
+`;
 const TaskListBox = styled.div`
   margin: 20px auto;
   width: 80%;
+  color: ${({ theme }) => theme.baseFont};
 `;
 const ListBox = styled.div`
   display: flex;
@@ -55,7 +60,7 @@ const ListBox = styled.div`
   gap: 10px;
   min-width: 520px;
   padding: 20px;
-  border: 1px solid ${({ theme }) => theme.lightMode.line};
+  border: 1px solid ${({ theme }) => theme.line};
 `;
 const TaskBox = styled.li<TaskBoxProp>`
   display: grid;
@@ -65,6 +70,6 @@ const TaskBox = styled.li<TaskBoxProp>`
   p {
     text-decoration: ${(props) => (props.isCheck ? "line-through" : "none")};
     color: ${(props) =>
-      props.isCheck ? props.theme.color.grey : props.theme.color.baseFont};
+      props.isCheck ? props.theme.line : props.theme.baseFont};
   }
 `;

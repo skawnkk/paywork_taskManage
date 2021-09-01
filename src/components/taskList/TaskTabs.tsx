@@ -54,15 +54,11 @@ const Tab = styled.div<TabProp>`
   min-width: 110px;
   text-align: center;
   padding: 5px;
-  color: ${({ theme }) => theme.lightMode.baseFont};
-  border: 1px solid ${({ theme }) => theme.lightMode.line};
+  color: ${({ theme }) => theme.baseFont};
+  border: 1px solid ${({ theme }) => theme.line};
   border-collapse: collapse;
   background-color: ${(props) =>
-    props.tabView === props.tab
-      ? props.theme.lightMode.accent
-      : props.theme.lightMode.main};
+    props.tabView === props.tab ? props.theme.accent : props.theme.main};
   color: ${(props) =>
-    props.tabView === props.tab
-      ? props.theme.lightMode.main
-      : props.theme.lightMode.baseFont};
+    props.tabView === props.tab ? props.theme.main : props.theme.baseFont};
 `;

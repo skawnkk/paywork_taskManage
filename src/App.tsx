@@ -1,11 +1,12 @@
 import { FormEvent, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTaskList, addTask } from "./store/actions/tasks";
+import { getTaskList, addTask } from "./store/actions/task/tasks";
 import styled from "styled-components";
 import { BsFillPlusCircleFill as PlusBtn } from "react-icons/bs";
 import TaskList from "components/taskList";
 import { useInput } from "./hooks/useInput";
 import { TasksToProp } from "utils/types";
+import SwitchMode from "components/SwitchMode";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,10 @@ function App() {
   return (
     <div className="App">
       <TaskHeader>
+        <SideBtn>
+          <SwitchMode />
+        </SideBtn>
+
         <h1>My Day</h1>
         <form name="enroll-task" onSubmit={handleCreateTask}>
           <input
@@ -49,13 +54,19 @@ function App() {
 }
 
 export default App;
+
+const SideBtn = styled.div`
+  position: absolute;
+  right: 100px;
+`;
 const TaskHeader = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 560px;
-  background-color: ${({ theme }) => theme.lightMode.accent};
-  color: ${({ theme }) => theme.lightMode.main};
+  background-color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.main};
   font-size: 30px;
   padding: 30px;
   h1 {
@@ -68,16 +79,16 @@ const TaskHeader = styled.div`
     width: 50%;
     min-width: 260px;
     margin-top: 30px;
-    border: 1px solid ${({ theme }) => theme.lightMode.main};
+    border: 1px solid ${({ theme }) => theme.main};
   }
   input {
     width: 100%;
   }
   input::placeholder {
-    color: ${({ theme }) => theme.lightMode.main};
+    color: ${({ theme }) => theme.main};
   }
   button {
-    color: ${({ theme }) => theme.lightMode.main};
+    color: ${({ theme }) => theme.main};
     font-size: 30px;
     padding-top: 9px;
   }

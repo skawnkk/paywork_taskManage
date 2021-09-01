@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { toggleTask } from "../../store/actions/task/tasks";
+import { toggleTask } from "store/actions/task/tasks";
 import { TaskToProp, TaskType } from "utils/types";
 import { BiCircle, BiCheckCircle } from "react-icons/bi";
 export default function TaskToggle({ task }: TaskToProp) {

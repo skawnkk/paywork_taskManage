@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FaCheck } from "react-icons/fa";
-import { editTask } from "../../store/actions/task/tasks";
+import { editTask } from "store/actions/task/tasks";
 import { useInput } from "hooks/useInput";
 import { TaskToProp } from "utils/types";
 import styled from "styled-components";

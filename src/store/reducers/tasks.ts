@@ -7,7 +7,7 @@ import {
   TASK_LIST_TOGGLE,
   TASK_LIST_DELETE,
 } from "../actions/task/types";
-import { TaskType, TaskStatus } from "../../utils/types";
+import { TaskType, TaskStatus } from "utils/types";
 
 interface Payload {
   data: TaskType;

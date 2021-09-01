@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTaskList } from "./store/actions/task/tasks";
+import { getTaskList } from "store/actions/task/tasks";
 import TaskInputForm from "components/taskHeader/TaskInputForm";
 import TaskList from "components/taskList";
-import SwitchMode from "components/SwitchMode";
+import SwitchMode from "components/taskHeader/SwitchMode";
 import { TasksToProp } from "utils/types";
 import styled from "styled-components";
 

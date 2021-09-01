@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTask } from "../../store/actions/task/tasks";
-import { TaskType, TasksToProp } from "../../utils/types";
-import { changeDateFormat } from "../../utils/date";
+import { deleteTask } from "store/actions/task/tasks";
+import { changeDateFormat } from "utils/date";
+import { TaskType, TasksToProp } from "utils/types";
 import { RiDeleteBin2Fill as TaskDeleteBtn } from "react-icons/ri";
 import styled from "styled-components";
 import TaskText from "./TaskText";

@@ -45,6 +45,7 @@ const FormBox = styled.div`
   }
   input {
     width: 100%;
+    color: ${({ theme }) => theme.headerElement};
   }
   input::placeholder {
     color: ${({ theme }) => theme.headerElement};

@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { delay, put, call, takeLatest, CallEffect } from "redux-saga/effects";
 import { TaskType } from "utils/types";
-import * as TASK_API from "../../utils/api";
+import * as TASK_API from "utils/api";
 import {
   TASK_LIST,
   TASK_LIST_SUCCESS,

@@ -5,7 +5,7 @@ import {
   TASK_TOGGLE,
   TASK_DELETE,
 } from "./types";
-import { TaskType } from "../../../utils/types";
+import { TaskType } from "utils/types";
 
 export const getTaskList = () => ({ type: TASK_LIST });
 export const addTask = (new_task: TaskType) => ({

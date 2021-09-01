@@ -17,8 +17,6 @@ export default function TaskList({ tasks }: Tasks) {
   const [listView, setListView] = useState(tasklist);
   const handleTaskDelete = (task: TaskType) => dispatch(deleteTask(task));
 
-  useEffect(() => setListView(tasklist), [tasks]);
-
   if (loading) return <ListBox>Loading...</ListBox>;
   if (error) return <ListBox>에러가 발생했어요. 다시 접속해 주세요😦</ListBox>;
   if (!tasklist.length) return <ListBox>새로운 계획을 세워보세요📌</ListBox>;

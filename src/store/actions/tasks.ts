@@ -8,17 +8,10 @@ import {
 import { TaskType } from "../../utils/types";
 //*액션함수생성
 
-//액션타입
-interface Action {
-  type: string;
-  payload: TaskType;
-  meta: TaskType;
-}
 export const getTaskList = () => ({ type: TASK_LIST });
-export const addTask = (new_task: TaskType): Action => ({
+export const addTask = (new_task: TaskType) => ({
   type: TASK_ADD,
   payload: new_task,
-  meta: new_task,
 });
 export const editTask = (task: TaskType) => ({
   type: TASK_EDIT,
@@ -28,7 +21,7 @@ export const toggleTask = (task: TaskType) => ({
   type: TASK_TOGGLE,
   payload: task,
 });
-export const deleteTask = (id: number | undefined) => ({
+export const deleteTask = (task: TaskType) => ({
   type: TASK_DELETE,
-  payload: id,
+  payload: task,
 });

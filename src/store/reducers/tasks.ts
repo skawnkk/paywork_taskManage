@@ -7,20 +7,17 @@ import {
   TASK_LIST_TOGGLE,
   TASK_LIST_DELETE,
 } from "../actions/types";
-import { TaskType } from "../../utils/types";
+import { TaskType, TaskStatus } from "../../utils/types";
 
-interface TasksType {
-  data: TaskType[];
-  loading: boolean;
-  error: boolean;
+interface Payload {
+  data: TaskType;
 }
 interface Action {
   type: string;
-  payload: any;
-  new_item: TaskType;
+  payload: Payload;
+  meta: number;
 }
-const INITIAL_STATE: TasksType = { data: [], loading: true, error: false };
-//[{data:{ id:1, content: '으쌰으쌰', isCheck: false, createdAt: 2021-09-01}, loading, error}]
+const INITIAL_STATE: TaskStatus = { data: [], loading: true, error: false };
 
 export default function tasks(state = INITIAL_STATE, action: Action) {
   switch (action.type) {
@@ -30,39 +27,36 @@ export default function tasks(state = INITIAL_STATE, action: Action) {
         loading: true,
         error: false,
       };
-    case TASK_LIST_SUCCESS: //전체목록받아오기(첫로딩)
+    case TASK_LIST_SUCCESS:
+      console.log(action.payload);
       return {
-        data: action.payload.data,
+        data: action.payload?.data,
         loading: false,
         error: false,
       };
     case TASK_LIST_ADD:
       return {
+        ...state,
         data: state.data?.concat(action.payload.data),
-        loading: false,
         error: false,
       };
     case TASK_LIST_TOGGLE:
       return {
         ...state,
-        data: state.data?.map((task) => {
-          return task.id === action.payload.data.id
-            ? { ...task, isCheck: !task.isCheck }
-            : task;
-        }),
-        loading: false,
-        error: false,
+        data: state.data?.map((task) =>
+          task.id !== action.payload.data.id
+            ? task
+            : { ...task, isCheck: !task.isCheck }
+        ),
       };
     case TASK_LIST_EDIT:
       return {
         ...state,
-        data: state.data?.map((task) => {
-          return task.id === action.payload.data.id
-            ? { ...task, content: action.payload.data.content }
-            : task;
-        }),
-        loading: false,
-        error: false,
+        data: state.data?.map((task) =>
+          task.id !== action.payload.data.id
+            ? task
+            : { ...task, content: action.payload.data.content }
+        ),
       };
     case TASK_LIST_ERROR:
       return {
@@ -73,9 +67,7 @@ export default function tasks(state = INITIAL_STATE, action: Action) {
     case TASK_LIST_DELETE:
       return {
         ...state,
-        data: state.data?.filter((task) => task.id !== action.payload),
-        loading: false,
-        error: false,
+        data: state.data?.filter((task) => task.id !== action.meta),
       };
     default:
       return state;

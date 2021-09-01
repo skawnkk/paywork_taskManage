@@ -17,6 +17,11 @@
 - [x] api요청 => server에서 반영 => front에서 재 반영  
        : 더 빠른 뷰와 리렌더링을 최소화하기 위함
 
+> 타입선언 :
+
+- 해당파일에서만 사용될 interface는 해당 파일에 작성
+- 여러번 사용되는 interface는 utils/types에 정리하였음.
+
 > 점검사항
 
 - api 정리
@@ -28,3 +33,28 @@
 - 절대경로 점검
 - 각 상황별 로딩 화면 보여주기
 - 로딩컴포넌트 꾸미기
+
+> API 설계 및 json구조
+> BASIC_URL : `http://localhost:4000/tasklist/${id}`
+
+- 전체 리스트 받아오기 : GET BASIC_URL
+- task 생성하기 : POST BASIC_URL, body: new_task
+- task 수정하기 : PUT BASIC_URL(id), body: taskToEdit
+- task 삭제하기 : DELETE BASIC_URL(id), body: taskToDelete
+
+```json
+{
+  "taskList": [
+    {
+      "data": {
+        "id": "number",
+        "content": "string",
+        "isCheck": "boolean",
+        "createdAt": "string"
+      },
+      "loading": "boolean",
+      "error": "boolean"
+    }
+  ]
+}
+```

@@ -22,7 +22,7 @@ interface ScreenProp {
 }
 
 const ToggleBox = styled.div`
-  border: 1px solid ${({ theme }) => theme.line};
+  border: 1px solid ${({ theme }) => theme.headerElement};
   border-radius: 30%;
   width: 50px;
   height: 25px;

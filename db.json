@@ -1,22 +1,10 @@
 {
   "tasklist": [
     {
-      "id": 1,
-      "content": "운동 오늘은 쉼",
-      "isCheck": true,
-      "createdAt": "Tue Aug 31 2021 15:16:05 GMT+0900 (한국 표준시)"
-    },
-    {
       "id": 2,
       "content": "모닝커피☕ + 샌드위치🥪",
       "isCheck": true,
       "createdAt": "Tue Aug 31 2021 15:16:05 GMT+0900 (한국 표준시)"
-    },
-    {
-      "content": "점심: 닭안심 노맛!",
-      "isCheck": false,
-      "createdAt": "Wed Sep 01 2021 14:15:12 GMT+0900 (한국 표준시)",
-      "id": 5
     },
     {
       "content": "하이~!!!!",
@@ -26,7 +14,7 @@
     },
     {
       "content": "절대경로안됨",
-      "isCheck": false,
+      "isCheck": true,
       "createdAt": "Thu Sep 02 2021 00:30:03 GMT+0900 (한국 표준시)",
       "id": 15
     },

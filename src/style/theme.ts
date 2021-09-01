@@ -3,7 +3,7 @@ const palette = {
   white: "#FBFCFD",
   black: "#222222",
   grey: "#c9c9c9",
-  green: "#12B886",
+  green: "#d9db60",
 };
 const { white, black, grey, green } = palette;
 const lightMode: Theme = {

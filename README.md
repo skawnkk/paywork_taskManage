@@ -9,6 +9,8 @@
 - 기본/ 다크모드 설정
 - loading/error 상태에 따른 뷰 반영
 
+### 구현추가 설명
+[위키📑](https://github.com/skawnkk/paywork_taskManage/wiki/%EA%B5%AC%ED%98%84%EC%B6%94%EA%B0%80%EC%84%A4%EB%AA%85)
 ### 폴더구조
 
 ```json

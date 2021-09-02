@@ -1,3 +1,9 @@
+### Getting Started
+```js
+client : yarn run start  
+server : yarn run dev
+```
+
 ### 시연영상
  [기본 CRUD]
  
@@ -41,8 +47,3 @@ src
 App
 ```
 
-### Getting Started
-```js
-client : yarn run start  
-server : yarn run dev
-```

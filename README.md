@@ -12,7 +12,12 @@ server : yarn run dev
 [스크린 다크모드 변경]  
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/65053955/131715112-111e9ef4-e796-4346-92a4-af46f9192606.gif)
 
+
+### Skill Stack
+`React` `TypeScript` `Redux` `JsonServer`  
+
 ### 기본구현사항
+- Redux Saga 비동기요청 사용
 - 전체 데이터 받아오기
 - 입력가능
 - 수정가능 (task: content 내용변경, isCheck toggle기능)
@@ -24,7 +29,8 @@ server : yarn run dev
 - loading/error 상태에 따른 뷰 반영
 
 ### 구현추가 설명
-[위키📑](https://github.com/skawnkk/paywork_taskManage/wiki/%EA%B5%AC%ED%98%84%EC%B6%94%EA%B0%80%EC%84%A4%EB%AA%85)
+[위키📑](https://github.com/skawnkk/paywork_taskManage/wiki/%EA%B5%AC%ED%98%84%EC%B6%94%EA%B0%80%EC%84%A4%EB%AA%85)  
+
 ### 폴더구조
 
 ```json

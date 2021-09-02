@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteTask } from "store/actions/task/tasks";
 import { changeDateFormat } from "utils/date";
@@ -11,13 +11,13 @@ import TaskTabs from "./TaskTabs";
 interface Tasks {
   tasks: TasksToProp;
 }
+
+//*태스크 목록 구성 : 기능_ 목록렌더, 삭제버튼
 export default function TaskList({ tasks }: Tasks) {
   const dispatch = useDispatch();
   const { data: tasklist, loading, error } = tasks.tasks;
   const [listView, setListView] = useState(tasklist);
   const handleTaskDelete = (task: TaskType) => dispatch(deleteTask(task));
-
-  useEffect(() => setListView(tasklist), [tasks]);
 
   if (loading) return <ListBox>Loading...</ListBox>;
   if (error) return <ListBox>에러가 발생했어요. 다시 접속해 주세요😦</ListBox>;

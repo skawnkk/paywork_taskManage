@@ -7,6 +7,7 @@ import {
 } from "./types";
 import { TaskType } from "utils/types";
 
+//*태스크 관련 액션생성함수
 export const getTaskList = () => ({ type: TASK_LIST });
 export const addTask = (new_task: TaskType) => ({
   type: TASK_ADD,

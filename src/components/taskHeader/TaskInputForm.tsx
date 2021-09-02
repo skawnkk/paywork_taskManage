@@ -4,6 +4,8 @@ import { useInput } from "hooks/useInput";
 import { addTask } from "store/actions/task/tasks";
 import { BsFillPlusCircleFill as PlusBtn } from "react-icons/bs";
 import styled from "styled-components";
+
+//* 새로운 태스크 추가
 export default function TaskInputForm() {
   const dispatch = useDispatch();
   const [value, onChange, setValue] = useInput("");
@@ -33,6 +35,7 @@ export default function TaskInputForm() {
     </FormBox>
   );
 }
+
 const FormBox = styled.div`
   width: 60%;
   form {

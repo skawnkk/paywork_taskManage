@@ -5,6 +5,8 @@ import { editTask } from "store/actions/task/tasks";
 import { useInput } from "hooks/useInput";
 import { TaskToProp } from "utils/types";
 import styled from "styled-components";
+
+//* 태스크 목록 내용 수정
 export default function TaskText({ task }: TaskToProp) {
   const dispatch = useDispatch();
   const [editText, onChange] = useInput(task.content);

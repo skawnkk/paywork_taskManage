@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteTask } from "store/actions/task/tasks";
 import { changeDateFormat } from "utils/date";
@@ -11,6 +11,8 @@ import TaskTabs from "./TaskTabs";
 interface Tasks {
   tasks: TasksToProp;
 }
+
+//*태스크 목록 구성 : 기능_ 목록렌더, 삭제버튼
 export default function TaskList({ tasks }: Tasks) {
   const dispatch = useDispatch();
   const { data: tasklist, loading, error } = tasks.tasks;

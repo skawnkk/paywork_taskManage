@@ -5,6 +5,8 @@ interface Tabs {
   setListView: Dispatch<SetStateAction<TaskType[]>>;
   tasklist: TaskType[];
 }
+
+//*탭 클릭 시, 전체목록/진행목록/완료목록 구분지어 확인
 export default function TaskTabs({ setListView, tasklist }: Tabs) {
   const tabs = ["ALL LIST", "IN PROGRESS", "DONE"];
   const [tabView, setTabView] = useState(tabs[0]);

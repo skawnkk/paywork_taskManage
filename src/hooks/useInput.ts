@@ -2,6 +2,7 @@ import { SetStateAction, Dispatch, useCallback } from "react";
 import { ChangeEvent } from "react";
 import { useState } from "react";
 
+//* 입력창 (태스크추가, 태스크 수정)에 사용되는 입력 커스텀훅
 type ReturnType<T> = [
   T,
   (e: ChangeEvent<HTMLInputElement>) => void,

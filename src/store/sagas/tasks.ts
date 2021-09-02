@@ -16,6 +16,9 @@ import {
   TASK_DELETE,
 } from "../actions/task/types";
 
+//*태스크 관리-비동기요청을 위한 reduxSaga함수생성
+// - 코드 중복을 줄이기 위한 createSaga customUtil함수 작성 및 적용
+
 const getList = createSaga(TASK_API.getLists, TASK_LIST_SUCCESS);
 const addTask = createSaga(TASK_API.addTask, TASK_LIST_ADD);
 const toggleTask = createSaga(TASK_API.toggleTask, TASK_LIST_TOGGLE);

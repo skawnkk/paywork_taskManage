@@ -9,6 +9,7 @@ import {
 } from "../actions/task/types";
 import { TaskType, TaskStatus } from "utils/types";
 
+//*태스크 관리 리듀서
 interface Payload {
   data: TaskType;
 }

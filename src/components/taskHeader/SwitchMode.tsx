@@ -3,11 +3,13 @@ import { switchDark, switchLight } from "store/actions/theme/screenTheme";
 import { SelectorType } from "utils/types";
 import styled from "styled-components";
 
+//* 다크-라이트 모드 전환
 export default function SwitchMode() {
   const dispatch = useDispatch();
   const isLightMode = useSelector((state: SelectorType) => state.screenTheme);
   const handleScreenMode = () => {
     isLightMode ? dispatch(switchDark()) : dispatch(switchLight());
+    localStorage.setItem("screenTheme", String(!isLightMode));
   };
   return (
     <ToggleBox>
